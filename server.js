@@ -1,21 +1,21 @@
-//* Build Server
+// Build server
 const express = require('express')
 const server = express()
 const router = require('./routes/router')
 const PORT = process.env.PORT || 3000
 
-//* Handle security
+// Handle security
 const helmet = require('helmet')
 const cors = require('cors')
 
-//* configuring helmet
-//* server.use(helmet())
+// configuring helmet
+// server.use(helmet())
 server.use(helmet.contentSecurityPolicy({
     useDefaults: true,
-    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: false,
     crossOriginEmbedderPolicy: false,
     directives: {
-        "img-src": ["'self'", "https: data:"],
+        "img-src": ["'self'", "https: data"],
         "scriptSrc": ["'self'", "cdn.jsdelivr.net"]
     }
 }))

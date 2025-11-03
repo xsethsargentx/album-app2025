@@ -6,16 +6,16 @@ const PORT = process.env.PORT || 3000
 router.get('/api', (req, res)=> {
     // res.send('album api')
     res.json({
-        'All ALbums': `http://localhost:${PORT}/api/album`
+        'All Albums': `http://localhost:${PORT}/api/album`
     })
 })
 
 router.use('/api/album', require('./api/albumRoutes'))
 
-//Error Handling
+// Error handling
 router.use((req, res, next)=> {
     res.status(404)
-    .send('<h1>404 Error. This page does not exist</h1>')
+    .send('<h1>404 Error This page does not exist</h1>')
 })
 
 module.exports = router
