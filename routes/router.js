@@ -1,0 +1,21 @@
+const express = require('express')
+const router = express.Router()
+const PORT = process.env.PORT || 3000
+
+// Root Route => http://localhost:3000/api
+router.get('/api', (req, res)=> {
+    // res.send('album api')
+    res.json({
+        'All ALbums': `http://localhost:${PORT}/api/album`
+    })
+})
+
+router.use('/api/album', require('./api/albumRoutes'))
+
+//Error Handling
+router.use((req, res, next)=> {
+    res.status(404)
+    .send('<h1>404 Error. This page does not exist</h1>')
+})
+
+module.exports = router
